@@ -8,12 +8,18 @@
 </head>
 <body>
     <h1>Trang đăng nhập</h1>
+    <?php if (isset($_GET['error'])) { ?>
+        <span style="color: red;">
+            <?php echo($_GET['error'])  ?>
+        </span>
+    <?php } ?>
+
     <form action="process_signin.php" method="post">
         Email
-        <input type="text" name="name" id="">
+        <input type="email" name="email" id="">
         <br>
         Password
-        <input type="text" name="password" id="">
+        <input type="password" name="password" id="">
         <br>
         <button>Đăng nhập</button>
     </form>

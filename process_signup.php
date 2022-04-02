@@ -28,5 +28,14 @@
     $sql = "insert into customers(name,email,password,phone,address) 
     values('$name','$email','$password','$phone','$address')";
     mysqli_query($connect,$sql);
+
+    //lưu thông tin user (id và name) vào session
+    $sql = "select id from customers where email ='$email'";
+    $result = mysqli_query($connect,$sql);
+    $id = mysqli_fetch_array($result)['id'];
+    session_start();
+    $_SESSION['id'] = $id;
+    $_SESSION['name'] = $name;
+
     mysqli_close($connect);
-    header('location:signin.php?success=Đăng ký thành công');
+    header('location:index.php?success=Đăng ký thành công');
