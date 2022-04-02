@@ -10,7 +10,7 @@
                 <a href="signout.php">Đăng xuất</a>
             </li>
             <li>
-                <a href="">Xem giỏ hàng của bạn</a>
+                <a href="view_cart.php">Xem giỏ hàng của bạn</a>
             </li>
         </ul>
     <?php } else { ?>
