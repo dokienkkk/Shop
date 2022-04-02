@@ -1,6 +1,3 @@
-<?php 
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
         body {
             height: 700px;
         }
         #header {
-            background-color: pink;
+            /* background-color: pink; */
             height: 20%;
         }
         #content {

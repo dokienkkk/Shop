@@ -20,8 +20,8 @@
             <div>
                 Giá: $<?php echo $each['price']; ?>
             </div>
-            <a href="">Xem chi tiết>>></a><br>
-            <a href="">Thêm vào giỏ hàng</a>
+            <a href="detail.php?id=<?php echo $each['id']?>">Xem chi tiết>>></a><br>
+            <a href="add_to_cart.php?id=<?php echo $each['id']?>">Thêm vào giỏ hàng</a>
         </div>
     <?php } ?>
     <?php mysqli_close($connect); ?>

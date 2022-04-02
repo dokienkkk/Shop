@@ -1,3 +1,32 @@
+
+<?php 
+//kiểm tra cookie nếu có thì cho user đăng nhập
+    session_start();
+    if (isset($_COOKIE['remember'])){
+        // die($_COOKIE['remember']);
+        $token = $_COOKIE['remember'];
+        require 'admin/connect.php';
+        $sql = "select * from customers where token = '$token'";
+        $result = mysqli_query($connect,$sql);
+        $number_rows = mysqli_num_rows($result);
+
+        //nếu người dùng có lưu token thì đăng nhập lun cho
+        if ($number_rows == 1) {
+            $each = mysqli_fetch_array($result);
+            $_SESSION['id'] = $each['id'];
+            $_SESSION['name'] = $each['name'];
+        }
+        // còn không không làm gì cả
+        // vẫn hiện form đăng nhập như bình thường
+
+    }
+    //tự động đăng nhập
+    if (isset($_SESSION['name'])){
+        header('location:index.php');
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +50,11 @@
         Password
         <input type="password" name="password" id="">
         <br>
+        Ghi nhớ đăng nhập
+        <input type="checkbox" name="remember" id="">
+        <br>
         <button>Đăng nhập</button>
     </form>
+    <p>Bạn chưa có tài khoản ? <a href="signup.php">Đăng ký</a></p>
 </body>
 </html>

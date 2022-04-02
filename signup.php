@@ -17,3 +17,4 @@
     <br>
     <button>Đăng ký</button>
 </form>
+<p>Bạn đã có tài khoản ? <a href="signin.php">Đăng nhập</a></p>
