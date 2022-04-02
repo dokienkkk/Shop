@@ -12,6 +12,7 @@
     <?php 
         session_start();
         $cart = $_SESSION['cart'];
+        $sum = 0;
     ?>
 
     <table border="1" width="100%">
@@ -37,12 +38,19 @@
                     <a href="update_quantity.php?id=<?php echo $product_id ?>&type=incre" style="text-decoration: none;">+</a>
                 </td>
                 <td><?php echo $product['price'] ?></td>
-                <td><?php echo $product['price'] * $product['quantity'] ?></td>
+                <td>
+                    <?php 
+                        echo $product['price'] * $product['quantity'];
+                        $sum += $product['price'] * $product['quantity'];
+                    ?>
+                </td>
                 <td>
                     <a href="delete_cart.php?id=<?php echo $product_id ?>">Xóa</a>
                 </td>
             </tr>
         <?php } ?>
+
+        <?php echo "Tổng tiền đơn hàng của bạn: ".$sum ?>
     </table>
 </body>
 </html>
