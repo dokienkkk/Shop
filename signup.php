@@ -1,4 +1,4 @@
-<h1>Trang đăng nhập Shop X</h1>
+<h1>Trang đăng ký tài khoản Shop X</h1>
 <form action="process_signup.php" method="post">
     Tên
     <input type="text" name="name" id="">
