@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    if (empty($_SESSION['cart'])){
+        echo 'Gio hang cua ban chua co san pham nao';
+    } else {
+        $cart = $_SESSION['cart'];
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,8 +19,7 @@
     <h1>Giỏ hàng của bạn</h1>
     <a href="index.php">Về trang chủ</a>
     <?php 
-        session_start();
-        $cart = $_SESSION['cart'];
+        // session_start();
         $sum = 0;
     ?>
 
@@ -26,7 +34,8 @@
             <td>Thành tiền</td>
             <td>Xóa</td>
         </tr>
-        <?php foreach ($cart as $product_id => $product) { ?>
+        <?php if (isset($cart)){
+            foreach ($cart as $product_id => $product) { ?>
             <tr>
                 <td><?php echo $product_id ?></td>
                 <td><?php echo $product['name'] ?></td>
@@ -49,8 +58,10 @@
                 </td>
             </tr>
         <?php } ?>
-
-        <?php echo "Tổng tiền đơn hàng của bạn: ".$sum ?>
     </table>
+    <h2>Tổng tiền đơn hàng của bạn: <?php echo $sum ?></h2>
+        <?php } else { ?>
+                <h2>GIo hang chua co san pham nao`</h2>
+        <?php  } ?>
 </body>
 </html>
