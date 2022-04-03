@@ -1,3 +1,6 @@
+<?php 
+    require '../check_login_admin.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +18,9 @@
         on products.manufacturer_id = manufacturers.id";
         $result = mysqli_query($connect,$sql);
     ?>
-    <h1>Quản lý nhà sản phẩm</h1>
+    <h1>Quản lý sản phẩm</h1>
+    <a href="../root/index.php">Về trang quản lý của admin</a>
+    <br>
     <a href="form_insert.php">Thêm sản phẩm</a>
     <table border="1" width="100%">
         <tr>

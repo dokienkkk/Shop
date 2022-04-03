@@ -39,7 +39,7 @@
             <tr>
                 <td><?php echo $product_id ?></td>
                 <td><?php echo $product['name'] ?></td>
-                <td><img src="admin/products/images/<?php echo $product['image'] ?>" height="200px" alt=""></td>
+                <td><img src="admin/products/images/<?php echo $product['image'] ?>" height="100px" alt=""></td>
                 <td><?php echo $product['manufacturer_name'] ?></td>
                 <td>
                     <a href="update_quantity.php?id=<?php echo $product_id ?>&type=decre" style="text-decoration: none;">-</a>
@@ -71,21 +71,23 @@
         $sql = "select * from customers where id = '$id'";
         $result = mysqli_query($connect,$sql);
         $each = mysqli_fetch_array($result);
+        // print_r($each);
+        // die();
     ?>
-    <form action="">
+    <form action="process_checkout.php" method="post">
         Tên người nhận
-        <input type="text" name="name_receiver" value="<?php $each['name'] ?>">
+        <input type="text" name="name_receiver" value="<?php echo $each['name'] ?>">
         <br>
         Số điện thoại người nhận
-        <input type="text" name="phone_receiver" value="<?php $each['phone'] ?>">
+        <input type="text" name="phone_receiver" value="<?php echo $each['phone'] ?>">
         <br>
         Địa chỉ người nhận
-        <input type="text" name="address_receiver" value="<?php $each['address'] ?>">
+        <input type="text" name="address_receiver" value="<?php echo $each['address'] ?>">
         <br>
         <button>Đặt hàng</button>
     </form>
     <?php } else { ?>
-            <h2>GIo hang chua co san pham nao`</h2>
+            <h2>Giỏ hàng chưa có sản phẩm nào</h2>
     <?php  } ?>
 </body>
 </html>

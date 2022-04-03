@@ -1,3 +1,6 @@
+<?php 
+    require '../check_login_super_admin.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +16,8 @@
         $result = mysqli_query($connect,$sql);
     ?>
     <h1>Quản lý nhà sản xuất</h1>
+    <a href="../root/index.php">Về trang quản lý của admin</a>
+    <br>
     <a href="form_insert.php">Thêm nhà sản xuất</a>
     <table border="1" width="100%">
         <tr>

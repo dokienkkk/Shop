@@ -1,3 +1,6 @@
+<?php 
+    require '../check_login_admin.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
