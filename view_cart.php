@@ -60,8 +60,32 @@
         <?php } ?>
     </table>
     <h2>Tổng tiền đơn hàng của bạn: <?php echo $sum ?></h2>
-        <?php } else { ?>
-                <h2>GIo hang chua co san pham nao`</h2>
-        <?php  } ?>
+    
+    <!-- Orders -->
+    <h3>Thông tin người nhận</h3>
+    <?php 
+        //lấy lại thông tin khách hàng điền sẵn vào form đặt hàng
+        //cho trải nghiệm tốt hơn
+        $id = $_SESSION['id'];
+        require 'admin/connect.php';
+        $sql = "select * from customers where id = '$id'";
+        $result = mysqli_query($connect,$sql);
+        $each = mysqli_fetch_array($result);
+    ?>
+    <form action="">
+        Tên người nhận
+        <input type="text" name="name_receiver" value="<?php $each['name'] ?>">
+        <br>
+        Số điện thoại người nhận
+        <input type="text" name="phone_receiver" value="<?php $each['phone'] ?>">
+        <br>
+        Địa chỉ người nhận
+        <input type="text" name="address_receiver" value="<?php $each['address'] ?>">
+        <br>
+        <button>Đặt hàng</button>
+    </form>
+    <?php } else { ?>
+            <h2>GIo hang chua co san pham nao`</h2>
+    <?php  } ?>
 </body>
 </html>
