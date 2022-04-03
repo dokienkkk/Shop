@@ -1,6 +1,7 @@
 <?php 
     session_start();
-    if (isset($_SESSION['level'])) {
+    // die($_SESSION['level']);
+    if (!isset($_SESSION['level'])) {
         header('location:../index.php');
         exit;
     }
