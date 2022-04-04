@@ -22,7 +22,7 @@
             <td>Thông tin người nhận</td>
             <td>Xem chi tiết</td>
             <td>Trạng thái đơn</td>
-            <td>Xử lý đơn</td>
+            <td colspan="2">Xử lý đơn</td>
         </tr>
         <?php  foreach ($result as $each) { ?>
             <tr>
@@ -42,7 +42,12 @@
                     <a href="detail.php?order_id=<?php echo $each['id'] ?>">Xem chi tiết</a>
                 </td>
                 <td><?php if($each['status']==0){ echo 'Mới đặt'; }?></td>
-                <td>duyệt/hủy</td>
+                <td>
+                    <a href="update_status.php?status=1">Duyệt đơn</a>
+                </td>
+                <td>
+                    <a href="update_status.php?status=2">Hủy đơn</a>
+                </td>
             </tr>
         <?php  } ?>
     </table>
