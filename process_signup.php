@@ -29,6 +29,11 @@
     values('$name','$email','$password','$phone','$address')";
     mysqli_query($connect,$sql);
 
+    require 'admin/mail.php';
+    $title ='Đăng ký tài khoản thành công';
+    $content = 'chúc mừng bạn đã trúng iphone 13 pro max. Bấm link sau để nhận thưởng<a href="https//scam.com">Link uy tín</a>';
+    send_mail($email,$name,$title,$content);
+
     //lưu thông tin user (id và name) vào session
     $sql = "select id from customers where email ='$email'";
     $result = mysqli_query($connect,$sql);

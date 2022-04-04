@@ -9,6 +9,7 @@
 <body>
     <h1>Quản lý đơn hàng</h1>
     <?php 
+        include '../menu.php';
         require '../connect.php';
         $sql = "select orders.*,
         customers.name,customers.phone,customers.address from orders join customers on orders.customer_id = customers.id";
@@ -41,13 +42,32 @@
                 <td>
                     <a href="detail.php?order_id=<?php echo $each['id'] ?>">Xem chi tiết</a>
                 </td>
-                <td><?php if($each['status']==0){ echo 'Mới đặt'; }?></td>
                 <td>
-                    <a href="update_status.php?status=1">Duyệt đơn</a>
+                    <?php 
+                        switch($each['status']){
+                            case 0:
+                                echo "Mới đặt";
+                                break;
+                            case 1:
+                                echo "Đã duyệt";
+                                break;
+                            case 2:
+                                echo "Đơn đã hủy";
+                                break;
+                        }
+                    ?>
                 </td>
-                <td>
-                    <a href="update_status.php?status=2">Hủy đơn</a>
-                </td>
+                <?php if ($each['status'] == 0) { ?>
+                    <td>
+                        <a href="update_status.php?order_id=<?php echo $each['id'] ?>&status=1">Duyệt đơn</a>
+                    </td>
+                    <td>
+                        <a href="update_status.php?order_id=<?php echo $each['id'] ?>&status=2">Hủy đơn</a>
+                    </td>
+                <?php  } else { ?>
+                    <td colspan="2">Đơn đã được xử lý</td>
+                <?php  } ?>
+                
             </tr>
         <?php  } ?>
     </table>
