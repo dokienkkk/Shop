@@ -2,11 +2,12 @@
     //xử lý gửi mail 
     //code lấy từ github.com/PHPMailer
 
-    require '../PHPMailer/src/Exception.php';
-    require '../PHPMailer/src/OAuth.php';
-    require '../PHPMailer/src/OAuthTokenProvider.php';
-    require '../PHPMailer/src/POP3.php';
-    require '../PHPMailer/src/SMTP.php';
+    require 'PHPMailer/src/Exception.php';
+    require 'PHPMailer/src/PHPMailer.php';
+    // require 'PHPMailer/src/OAuth.php';
+    // require 'PHPMailer/src/OAuthTokenProvider.php';
+    require 'PHPMailer/src/POP3.php';
+    require 'PHPMailer/src/SMTP.php';
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
 use PHPMailer\PHPMailer\PHPMailer;
@@ -16,7 +17,7 @@ use PHPMailer\PHPMailer\Exception;
 //dựng hàm để tí gửi mail theo ý mình
 function send_mail($to_email_address,$name_customer,$title,$content){
     //Create an instance; passing `true` enables exceptions
-    $mail = new PHPMailer(true);
+    $mail = new PHPMailer(false);
     
     try {
         //Server settings
@@ -25,7 +26,7 @@ function send_mail($to_email_address,$name_customer,$title,$content){
         $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
         $mail->Username   = 'doduynam692002@gmail.com';                     //SMTP username
-        $mail->Password   = 'kien036099004905';                               //SMTP password
+        $mail->Password   = 'kienphptest';                               //SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
         $mail->SMTPSecure = "tls";
         $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
@@ -60,7 +61,7 @@ function send_mail($to_email_address,$name_customer,$title,$content){
         // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
     
         $mail->send();
-        // echo 'Message has been sent';
+        echo 'Message has been sent';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
     }

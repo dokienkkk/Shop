@@ -27,9 +27,12 @@
     }
     $sql = "insert into customers(name,email,password,phone,address) 
     values('$name','$email','$password','$phone','$address')";
+    // die($sql);
     mysqli_query($connect,$sql);
 
-    require 'admin/mail.php';
+
+    //gửi email cho người dùng
+    require 'mail.php';
     $title ='Đăng ký tài khoản thành công';
     $content = 'chúc mừng bạn đã trúng iphone 13 pro max. Bấm link sau để nhận thưởng<a href="https//scam.com">Link uy tín</a>';
     send_mail($email,$name,$title,$content);
@@ -43,4 +46,4 @@
     $_SESSION['name'] = $name;
 
     mysqli_close($connect);
-    header('location:index.php?success=Đăng ký thành công');
+    // header('location:index.php?success=Đăng ký thành công');
