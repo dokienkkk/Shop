@@ -53,6 +53,7 @@
         Ghi nhớ đăng nhập
         <input type="checkbox" name="remember" id="">
         <br>
+        <a href="forgot_password.php">Quên mật khẩu</a>
         <button>Đăng nhập</button>
     </form>
     <p>Bạn chưa có tài khoản ? <a href="signup.php">Đăng ký</a></p>
